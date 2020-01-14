@@ -6,9 +6,8 @@ import VueLodash from 'vue-lodash'
 
 Vue.config.productionTip = false
 
-Vue.use(VueLodash, options) // options is optional
-const options = { name: 'lodash' } // customize the way you want to call it
-
+const options = { name: 'lodash' } 
+Vue.use(VueLodash, options) 
 Vue.use(VueRouter)
 const router = new VueRouter({ routes })
 
