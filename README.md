@@ -1,7 +1,24 @@
-# SiteNASA
-Notre projet Vue.js
+# monprojet
 
-Ici vous pourrez retrouver notre projet Vue.js et Javascript basé sur les calls d'API.
+## Project setup
+```
+npm install
+```
 
-Notre but donc de réalisé un site où vous pourrez retrouver l'actualité de la NASA (image du jour), une fonction de recherche par mot clé dans la BDD de la NASA ainsi qu'un mini jeu, la pétanque de l'espace.
-Ce projet représente aussi nos premiers pas sur Github et sur l'utilisation de Bootstrap.
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
