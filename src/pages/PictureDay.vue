@@ -3,18 +3,16 @@
     <h1>PICTURE OF THE DAY</h1>
     <div class="row">
       <div class="col-sm">
-        <h2>{{ picOfDay.title}}</h2>
+        <h2 class="mb-5 mt-5">{{ picOfDay.title}}</h2>
         <img :src="picOfDay.hdurl" width="500" alt="pictureoftheday" />
         <p class="text-center text-justify">
-          <i class="material-icons">add_a_photo</i>
+          <i class="material-icons"></i>
           Photo take the : {{ picOfDay.date }}
         </p>
       </div>
       <div class="col-sm" id="right-container">
-        <h1>Explanation</h1>
-        <p class="text-justify">{{ picOfDay.explanation}}</p>
-        <h2>Copyright</h2>
-        <p>{{ picOfDay.copyright }}</p>
+        <h1 class="mb-5">Explanation</h1>
+        <p class="text-justify mt-5">{{ picOfDay.explanation}}</p>
       </div>
     </div>
   </div>
