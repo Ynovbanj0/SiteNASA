@@ -18,23 +18,36 @@
             evidence of past water and geological change.
           </p>
         </div>
-        <div class="col-sm" id="right">
+        <div class="col-sm mb-5" id="right">
           <img :src="require('@/assets/Rover.png')" width="900" id="rover" class="text-center" />
         </div>
       </div>
     </div>
 
-    <div class="container-fluid text-center" id="API">
-      <h1>MARS VIEWS</h1>
-      <p>With this buttons you can observe different point of views of Mars.</p>
+    <div class="container-fluid text-center mt-5">
+      <h1 class="mt-5 mb-5">MARS VIEWS</h1>
+      <p class="mt-5 mb-5">With this buttons you can observe different point of views of Mars.</p>
       <div class="row">
-        <div class="col-lg">
-          <button class="btn btn-danger" id="button" v-on:click="RoverRecup">Lancer l'API</button>
+        <div class="col-sm">
+          <img :src="roverA.photos[this.compteurA].img_src" width="500" alt />
+          <p>{{ roverA.photos[this.compteurA].earth_date }}</p>
+          <button class="btn btn-danger mb-5" id="button" v-on:click="ShowA">Suivant</button>
+          <div class="col-sm mb-5">
+            <img :src="roverB.photos[this.compteurB].img_src" width="500" alt />
+            <p>{{ roverB.photos[this.compteurB].earth_date }}</p>
+            <button type="button" class="btn btn-danger mb-5" id="button" v-on:click="ShowB">Suivant</button>
+          </div>
         </div>
-        <div class="col-lg" v-if="rover > 0">
-          <h1>LIFE ON MARS ?</h1>
-          <img :src="rover.photos[2].img_src" width="500" alt="rover" />
-          <p>{{rover.photos[3].earth_date}}</p>
+
+        <div class="col-sm mb-5">
+          <img :src="roverC.photos[this.compteurC].img_src" width="500" alt />
+          <p>{{ roverC.photos[this.compteurC].earth_date }}</p>
+          <button class="btn btn-danger mb-5" id="button" v-on:click="ShowC">Suivant</button>
+          <div class="col-sm mb-5">
+            <img :src="roverD.photos[this.compteurD].img_src" width="500" alt />
+            <p>{{ roverD.photos[this.compteurD].earth_date }}</p>
+            <button class="btn btn-danger mb-5" id="button" v-on:click="ShowD">Suivant</button>
+          </div>
         </div>
       </div>
     </div>
@@ -48,20 +61,73 @@ export default {
 
   data() {
     return {
-      rover: {}
+      roverA: {},
+      roverB: {},
+      roverC: {},
+      roverD: {},
+      compteurA: 0,
+      compteurB: 0,
+      compteurC: 0,
+      compteurD: 0
     };
   },
 
   methods: {
-    RoverRecup() {
+    RoverRecup1() {
       fetch(
-        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=2500&rhaz=4&api_key=CzWhkTtM5WlZWmjsRzNn4ULYz5mVCZqOu6WaVddK"
+        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1500&page=5&api_key=CzWhkTtM5WlZWmjsRzNn4ULYz5mVCZqOu6WaVddK"
       )
         .then(result => result.json())
         .then(result => {
-          this.rover = result;
+          this.roverA = result;
         });
+    },
+    RoverRecup2() {
+      fetch(
+        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=0&page=1&api_key=CzWhkTtM5WlZWmjsRzNn4ULYz5mVCZqOu6WaVddK"
+      )
+        .then(result => result.json())
+        .then(result => {
+          this.roverB = result;
+        });
+    },
+    RoverRecup3() {
+      fetch(
+        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1500&page=1&api_key=CzWhkTtM5WlZWmjsRzNn4ULYz5mVCZqOu6WaVddK"
+      )
+        .then(result => result.json())
+        .then(result => {
+          this.roverC = result;
+        });
+    },
+    RoverRecup4() {
+      fetch(
+        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=5&api_key=CzWhkTtM5WlZWmjsRzNn4ULYz5mVCZqOu6WaVddK"
+      )
+        .then(result => result.json())
+        .then(result => {
+          this.roverD = result;
+        });
+    },
+    ShowA() {
+      this.compteurA += 1;
+    },
+    ShowB() {
+      this.compteurB += 1;
+    },
+    ShowC() {
+      this.compteurC += 1;
+    },
+    ShowD() {
+      this.compteurD += 1;
     }
+  },
+
+  mounted: function() {
+    this.RoverRecup1();
+    this.RoverRecup2();
+    this.RoverRecup3();
+    this.RoverRecup4();
   },
   props: {
     msg: String
@@ -71,6 +137,9 @@ export default {
 
 
 <style scoped>
+* {
+  padding: 0;
+}
 h1,
 h2 {
   font-family: "Nasalization";
@@ -85,11 +154,11 @@ h2 {
   width: 90vw;
 }
 #left {
-  margin-top: 10%;
+  margin-top: 15%;
 }
 #rover {
   margin-left: 9%;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 #API {
   margin-top: 10%;
