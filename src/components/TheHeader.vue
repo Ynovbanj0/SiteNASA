@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand" href="/">
+    <router-link class="navbar-brand" to="/">
       <img :src="require(`../assets/nasalogo.png`)" width="100" />
-    </a>
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,13 +16,13 @@
     </button>
     <div class="navbar-text" id="navbarNavAltMarkup">
       <div class="navbar-nav text-center">
-        <a class="nav-item nav-link active" href="/">
+        <router-link class="nav-item nav-link active" to="/">
           Picture of the Day
           <span class="sr-only">(current)</span>
-        </a>
-        <a class="nav-item nav-link" href="/gallery">Gallerie</a>
-        <a class="nav-item nav-link" href="/marsAttack">Mars-Attack</a>
-        <a class="nav-item nav-link" href="/robotRock">Robot-Rock</a>
+        </router-link>
+        <router-link class="nav-item nav-link" to="/gallery">Gallerie</router-link>
+        <router-link class="nav-item nav-link" to="/marsAttack">Mars-Attack</router-link>
+        <router-link class="nav-item nav-link" to="/robotRock">Robot-Rock</router-link>
       </div>
     </div>
   </nav>
